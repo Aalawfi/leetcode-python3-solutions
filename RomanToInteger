@@ -1,0 +1,36 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        dict = {"I":1,"V":5,"X":10,
+                "L":50, "C":100, "D":500, 
+                 "M":1000}
+        input = s
+        sum =0
+        while "IV" in input:
+            if "IV" in input: 
+                sum = sum + 4 
+                input = input.replace("IV","",1)
+        while "IX" in input:
+            if "IX" in input: 
+                sum = sum + 9 
+                input = input.replace("IX","",1)
+        while "XL" in input:
+            if "XL" in input: 
+                sum = sum + 40 
+                input = input.replace("XL","",1)
+        while "XC" in input:
+            if "XC" in input: 
+                sum = sum + 90
+                input = input.replace("XC","",1)
+        while "CD" in input:
+            if "CD" in input: 
+                sum = sum + 400 
+                input = input.replace("CD","",1)
+        while "CM" in input:
+            if "CM" in input: 
+                sum = sum + 900 
+                input = input.replace("CM","",1)
+
+        alist = list(input)
+        for item in (alist): 
+            sum += dict[item]
+        return sum
